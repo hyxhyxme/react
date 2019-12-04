@@ -1,11 +1,15 @@
-import promiseMiddleware from 'redux-promise';
+/* import promiseMiddleware from 'redux-promise'; */
 /* import saga  from  './saga' */
-const { createStore, applyMiddleware } = require('redux')
+const { createStore, bindActionCreators } = require('redux')
 /* import thunk from 'redux-thunk' */
 /* const createSagaMiddleware = require('redux-saga').default
 const sagaMiddleware = createSagaMiddleware() */
 const reducers  = require('./reducers')
-const store = createStore(reducers,applyMiddleware(promiseMiddleware))
+const store = createStore(reducers)
+/* store.subscribe(()=>{
+    console.log(store.getState());
+    
+}) */
 /* sagaMiddleware.run(saga) */
 //thunk测试 
 /* store.dispatch((dispatch)=>{
@@ -22,7 +26,7 @@ const store = createStore(reducers,applyMiddleware(promiseMiddleware))
     type:'loadDada'
 }) */
 
-store.dispatch(
+/* store.dispatch(
     new Promise((resolve)=>{
        setTimeout(()=>{
         resolve(({
@@ -31,5 +35,17 @@ store.dispatch(
        },2000)
     })
 )
+ */
 
-export default store
+ const { show } = require('./action_creators/show')
+ const counterCreators = require('./action_creators/counter')
+/* store.dispatch(show({
+    type : 'show',
+    data : 'hello rsr'
+}))
+store.dispatch(increment()) */
+/* export default store */
+
+/* const bac = bindActionCreators(counterCreators,dispatch) */
+
+module.exports = store

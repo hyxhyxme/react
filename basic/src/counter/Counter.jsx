@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
-import store from '../redux/store'
+import Counter1 from './Counter1'
+import { bindActionCreators } from 'redux'
+const store = require('../redux/store')
+const counterActionCreatores = require('../redux/action_creators/counter')
 export class Counter extends Component {
     state = {
-        counter : 0
+        count : store.getState().counter.count
+    }
+    constructor(){
+        super()
+        this.bac = bindActionCreators(counterActionCreatores,store.dispatch)
     }
     render() {
         return (
             <div>
-                {this.state.counter}
+                {this.state.count}
+                <Counter1 {...this.bac} value="124"></Counter1>
             </div>
         )
     }
     componentDidMount(){
-        store.subscribe(()=>{
-            console.log(22);
-            this.setState({
-                counter : store.getState().counter
-            })
-        })
+       
+        
     }
 }
 

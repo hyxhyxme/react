@@ -1,19 +1,11 @@
-const defaultState = {
-    counter : 0 
-}
+const { combineReducers } = require('redux')
 
-module.exports = (state = defaultState, action)=>{
-    switch(action.type){
-        case 'increment':
-            console.log('increment');
-            
-            return {
-                counter : state.counter + 1
-            }
-        default :
-            console.log('default');
-            
-            return state
-    }
-}
+const counter = require('./reducers/counter')
+const show = require('./reducers/show')
 
+const reducers = combineReducers({
+    counter,
+    show
+})
+
+module.exports = reducers
