@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from './counter/Counter'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Index from './router/index'
+
 ReactDOM.render(
-    <Counter></Counter>,
+    <Router>
+         <Index></Index>
+    </Router>,
     document.getElementById('root')
 );
 
